@@ -9,39 +9,40 @@ import { View,
          } from 'react-native';
 import React, {useState} from 'react';
 
-const HomeScreen = ({ navigation }) => {
+const BemVindo = ({ navigation }) => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={styles.t1titulo}> CECOEXP </Text>
       <StatusBar style="auto" />
-      <Text style={styles.t1texto}> Controle de estoque de insumos da COEXP - UTFPR  </Text>
-      <Pressable style={styles.button} onPress={() => navigation.navigate('SignUp')}>
+      <Text style={styles.t1texto}> Bem Vindo :Usuario  </Text>
+
+      <Pressable style={styles.button} onPress={() => navigation.navigate('MenuInsumos')}>
       <Text style={styles.t1txtbotao}>COMEÇAR</Text>
       </Pressable>
 
-
-    </View>
+   </View>
   );
 };
 
 const styles = StyleSheet.create({
-  t1txtbotao: {
-    color: 'white',
-    fontSize: 19,
-    fontWeight: '800',
-    fontFamily: 'serif',
-  },
 
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#7ED957',
-    padding: 7,
-    width: 220,
-    height: 45,
-    borderRadius: 30,
-    marginTop: 70,
-  },
-
+    t1txtbotao: {
+        color: 'white',
+        fontSize: 19,
+        fontWeight: '800',
+        fontFamily: 'serif',
+      },
+    
+      button: {
+        alignItems: 'center',
+        backgroundColor: '#7ED957',
+        padding: 7,
+        width: 220,
+        height: 45,
+        borderRadius: 30,
+        marginTop: 70,
+      },
+    
 
 
   t1titulo: {
@@ -60,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default BemVindo;

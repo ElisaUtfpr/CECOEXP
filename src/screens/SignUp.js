@@ -1,68 +1,80 @@
 // SignUp.js
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import Login from './Login'; 
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   return (
-    <View style={{ backgroundColor: '#7ED957', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={styles.t2Texto}>Criar uma nova conta </Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Text style={styles.t2Texto}>Criar uma nova conta</Text>
 
-      <TextInput
-        style={styles.input}
-        containerStyle={{ marginTop: 15 }}
-        placeholder="Nome"
-        autoCapitalize="none"
-        autoCompleteType="off"
-        autoCorrect={false}
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Nome"
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+        />
 
-      <TextInput
-        style={styles.input}
-        containerStyle={{ marginTop: 15 }}
-        placeholder="Sobrenome"
-        autoCapitalize="none"
-        autoCompleteType="off"
-        autoCorrect={false}
-      />
+        <TextInput
+          style={styles.input}
+          placeholder="Sobrenome"
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+        />
 
-      <TextInput
-        style={styles.input}
-        containerStyle={{ marginTop: 15 }}
-        placeholder="Senha"
-        autoCapitalize="none"
-        autoCompleteType="off"
-        autoCorrect={false}
-      />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+        />
 
-      <TextInput
-        style={styles.input}
-        containerStyle={{ marginTop: 15 }}
-        placeholder="Repita a senha "
-        autoCapitalize="none"
-        autoCompleteType="off"
-        autoCorrect={false}
-      />
+        <TextInput
+          style={styles.input}
+          placeholder="Repita a senha"
+          autoCapitalize="none"
+          autoCompleteType="off"
+          autoCorrect={false}
+        />
+      </View>
 
-      <Text color="white" size="md" >Já tem uma conta ? </Text>
-      <TouchableOpacity onPress={() => { navigation.navigate("Register"); }}>
-        <Text 
-          size="md"
-          fontWeight="bold"
-          style={{ marginLeft: 5, }}>
-          Entrar
-        </Text>
+      <TouchableOpacity style={styles.button} onPress={() => { /* Lógica de cadastro aqui */ }}>
+        <Text style={styles.buttonText}>CADASTRAR</Text>
       </TouchableOpacity>
 
-    </View>
+      <View style={styles.loginContainer}>
+        <Text style={styles.loginText}>Já tem uma conta?</Text>
+        <TouchableOpacity onPress={() => { navigation.navigate("Login"); }}>
+          <Text style={styles.loginLink}>Entrar</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#7ED957',
+    alignItems: 'center',
+    paddingTop: 50,
+  },
+
   t2Texto: {
     color: 'white',
-    fontSize: 19,
+    fontSize: 21,
     fontWeight: '800',
     fontFamily: 'serif',
+    marginBottom: 20,
+  },
+
+  inputContainer: {
+    width: '100%',
+    alignItems: 'center',
   },
 
   input: {
@@ -70,11 +82,46 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#fff',
     height: 55,
-    margin: 12,
+    marginVertical: 10,
     borderWidth: 1,
     padding: 10,
     width: 300,
     fontSize: 19,
+  },
+
+  button: {
+    backgroundColor: 'white',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    padding: 7,
+    width: 220,
+    height: 45,
+    borderRadius: 30,
+    marginTop: 50,
+  },
+
+  buttonText: {
+    color: 'black',
+    fontSize: 19,
+    fontWeight: '800',
+    fontFamily: 'serif',  },
+
+  loginContainer: {
+    flexDirection: 'row',
+    marginTop: 50,
+  },
+
+  loginText: {
+    color: 'white',
+    fontSize: 20,
+  },
+
+  loginLink: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginLeft: 5,
   },
 });
 
