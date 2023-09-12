@@ -42,7 +42,7 @@ const SignUp = ({ navigation }) => {
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => { /* Lógica de cadastro aqui */ }}>
+      <TouchableOpacity style={styles.button} >
         <Text style={styles.buttonText}>CADASTRAR</Text>
       </TouchableOpacity>
 

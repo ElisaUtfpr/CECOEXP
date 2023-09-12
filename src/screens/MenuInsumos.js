@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Importe o ícone FontAwesome (você pode escolher outro ícone se preferir)
+import Icon from 'react-native-vector-icons/FontAwesome'; 
 
 const MenuInsumos = ({ navigation }) => {
   return (
@@ -38,12 +38,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderRadius: 10,
+    height: 140,
+    width: 270, 
   },
 
   buttonText: {
     color: 'black',
     fontSize: 20,
-    marginLeft: 10,
+    marginLeft:25,
   },
 });
 

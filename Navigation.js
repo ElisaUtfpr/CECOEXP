@@ -9,6 +9,7 @@ import AdicaoInsumos from './src/screens/AdicaoInsumos';
 import MenuInsumos from './src/screens/MenuInsumos';
 import RetiradaInsumos from './src/screens/RetiradaInsumos';
 import ListaInsumos from './src/screens/ListaInsumos';
+import ProductCard from './src/componente/ProductCard';
 
 
 const Stack = createStackNavigator();
@@ -25,6 +26,7 @@ const Navigation = () => {
         <Stack.Screen name="MenuInsumos" component={MenuInsumos} />
         <Stack.Screen name="RetiradaInsumos" component={RetiradaInsumos} />
         <Stack.Screen name="ListaInsumos" component={ListaInsumos} />
+        <Stack.Screen name="ProductCard" component={ProductCard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

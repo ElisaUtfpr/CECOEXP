@@ -28,7 +28,6 @@ const Login = ({ navigation }) => {
         <Text style={styles.buttonText}>CONFIRMAR</Text>
       </TouchableOpacity>
 
-      {/* Movi a View para o final da ScrollView */}
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Não tem uma conta?</Text>
         <TouchableOpacity onPress={() => { navigation.navigate("SignUp"); }}>
