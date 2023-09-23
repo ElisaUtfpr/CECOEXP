@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TextInput ,StyleSheet, View, Text , ScrollView,SafeAreaView , StatusBar} from 'react-native';
+import { TouchableOpacity,TextInput ,StyleSheet, View, Text , ScrollView,SafeAreaView , StatusBar} from 'react-native';
 import ProductCard from '../componente/ProductCard';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
+import { useNavigation } from '@react-navigation/native'; 
 
 const ListaInsumos = () => {
   const [searchText, setSearchText] = useState(''); 
@@ -18,6 +19,7 @@ const ListaInsumos = () => {
   ];
 
 
+  const navigation = useNavigation(); 
 
   return (
 
@@ -40,12 +42,24 @@ const ListaInsumos = () => {
       product.produtoNome.toLowerCase().includes(searchText.toLowerCase())
     )
     .map((product) => (
+      <TouchableOpacity
+      key={product.id}
+      onPress={() => {
+        navigation.navigate('DetalhesProduto', {
+          produtoNome: product.produtoNome,
+          estoque: product.estoque,
+          dataUso: product.dataUso,
+        });
+      }}
+    >
       <ProductCard
         key={product.id}
         produtoNome={product.produtoNome}
         estoque={product.estoque}
         dataUso={product.dataUso}
       />
+                </TouchableOpacity>
+
     ))}
   </ScrollView>
   </SafeAreaView>

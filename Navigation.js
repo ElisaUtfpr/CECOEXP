@@ -10,6 +10,8 @@ import MenuInsumos from './src/screens/MenuInsumos';
 import RetiradaInsumos from './src/screens/RetiradaInsumos';
 import ListaInsumos from './src/screens/ListaInsumos';
 import ProductCard from './src/componente/ProductCard';
+import DetalhesProduto from './src/screens/DetalhesProduto';
+import SaidaProd from './src/screens/SaidaProd';
 
 
 const Stack = createStackNavigator();
@@ -17,7 +19,9 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="DetalhesProduto">
+     {/* </Stack.Navigator> <Stack.Navigator initialRouteName="Home"> */}
+
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Login" component={Login} />
@@ -27,6 +31,9 @@ const Navigation = () => {
         <Stack.Screen name="RetiradaInsumos" component={RetiradaInsumos} />
         <Stack.Screen name="ListaInsumos" component={ListaInsumos} />
         <Stack.Screen name="ProductCard" component={ProductCard} />
+        <Stack.Screen name="DetalhesProduto" component={DetalhesProduto} />
+        <Stack.Screen name="SaidaProd" component={SaidaProd} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
