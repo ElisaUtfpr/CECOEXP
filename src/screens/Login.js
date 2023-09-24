@@ -24,7 +24,7 @@ const Login = ({ navigation }) => {
         secureTextEntry
       />
 
-      <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("BemVindo"); }}>
+      <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("Bem Vindo"); }}>
         <Text style={styles.buttonText}>CONFIRMAR</Text>
       </TouchableOpacity>
 
@@ -78,7 +78,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 19,
-    fontWeight: 'bold',
+    fontWeight: '800',
+    fontFamily: 'serif',
+
   },
 
   signupContainer: {

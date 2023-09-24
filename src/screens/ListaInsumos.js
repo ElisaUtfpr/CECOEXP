@@ -45,7 +45,7 @@ const ListaInsumos = () => {
       <TouchableOpacity
       key={product.id}
       onPress={() => {
-        navigation.navigate('DetalhesProduto', {
+        navigation.navigate('Detalhes do Produto', {
           produtoNome: product.produtoNome,
           estoque: product.estoque,
           dataUso: product.dataUso,

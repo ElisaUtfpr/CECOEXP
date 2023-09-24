@@ -16,7 +16,7 @@ const BemVindo = ({ navigation }) => {
       <StatusBar style="auto" />
       <Text style={styles.t1texto}> Bem Vindo :Usuario  </Text>
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate('MenuInsumos')}>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('CECOEXP')}>
       <Text style={styles.t1txtbotao}>COMEÇAR</Text>
       </Pressable>
 

@@ -105,7 +105,9 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 19,
     fontWeight: '800',
-    fontFamily: 'serif',  },
+    fontFamily: 'serif',
+
+   },
 
   loginContainer: {
     flexDirection: 'row',

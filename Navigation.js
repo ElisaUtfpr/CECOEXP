@@ -19,20 +19,19 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DetalhesProduto">
-     {/* </Stack.Navigator> <Stack.Navigator initialRouteName="Home"> */}
+      <Stack.Navigator initialRouteName="Home">
 
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Sign Up" component={SignUp} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="BemVindo" component={BemVindo} />
-        <Stack.Screen name="AdicaoInsumos" component={AdicaoInsumos} />
-        <Stack.Screen name="MenuInsumos" component={MenuInsumos} />
-        <Stack.Screen name="RetiradaInsumos" component={RetiradaInsumos} />
-        <Stack.Screen name="ListaInsumos" component={ListaInsumos} />
+        <Stack.Screen name="Bem Vindo" component={BemVindo} />
+        <Stack.Screen name="Adicao de Insumos" component={AdicaoInsumos} />
+        <Stack.Screen name="CECOEXP" component={MenuInsumos} />
+        <Stack.Screen name="Retirada de Insumos" component={RetiradaInsumos} />
+        <Stack.Screen name="Lista de Insumos" component={ListaInsumos} />
         <Stack.Screen name="ProductCard" component={ProductCard} />
-        <Stack.Screen name="DetalhesProduto" component={DetalhesProduto} />
-        <Stack.Screen name="SaidaProd" component={SaidaProd} />
+        <Stack.Screen name="Detalhes do Produto" component={DetalhesProduto} />
+        <Stack.Screen name="Saida de Produtos" component={SaidaProd} />
 
       </Stack.Navigator>
     </NavigationContainer>

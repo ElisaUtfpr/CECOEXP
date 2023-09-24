@@ -19,17 +19,17 @@ const DetalhesProduto = ({ navigation }) => {
       <Text style={styles.input}>23/02/2028</Text>
 
       <Text style={styles.text}>Ultimo Recebimento:</Text>
-      <Text style={styles.input}>20/05/2028 {'\n'}Empresa X - 30 unidades</Text>
+      <Text style={styles.input}>20/05/2028 {'\n'}{'\n'}Empresa X - 30 unidades</Text>
 
       <Text style={styles.text}>Ultima Saida:</Text>
        <View style={styles.input} >
-      <Text>20/05/2023 {'\n'}
+      <Text>20/05/2023 {'\n'}{'\n'}
       Elisa Capelett - 30 unidades 
       </Text>
       <View style={styles.input} >
 
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate('SaidaProd')}>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('Saida de Produtos')}>
       <Text style={styles.buttonText}>VER TODOS</Text>
       </Pressable>
       </View>

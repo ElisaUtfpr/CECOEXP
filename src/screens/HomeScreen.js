@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.t1titulo}> CECOEXP </Text>
       <StatusBar style="auto" />
       <Text style={styles.t1texto}> Controle de estoque de insumos da COEXP - UTFPR  </Text>
-      <Pressable style={styles.button} onPress={() => navigation.navigate('SignUp')}>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('Sign Up')}>
       <Text style={styles.t1txtbotao}>COMEÇAR</Text>
       </Pressable>
 

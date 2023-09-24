@@ -5,17 +5,17 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const MenuInsumos = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ListaInsumos")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Lista de Insumos")}>
         <Icon name="file" size={50} color="black" />
         <Text style={styles.buttonText}>Lista de Insumos</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("AdicaoInsumos")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Adicao de Insumos")}>
         <Icon name="plus" size={50} color="black" />
         <Text style={styles.buttonText}>Adição de Insumo</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("RetiradaInsumos")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Retirada de Insumos")}>
         <Icon name="minus" size={50} color="black" />
         <Text style={styles.buttonText}>Retirada de Insumo</Text>
       </TouchableOpacity>

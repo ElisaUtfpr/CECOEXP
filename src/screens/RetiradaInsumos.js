@@ -97,7 +97,9 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'black',
     fontSize: 19,
-    fontWeight: 'bold',
+    fontWeight: '800',
+    fontFamily: 'serif',
+
   },
   modalContainer: {
     flex: 1,
