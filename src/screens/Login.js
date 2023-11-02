@@ -1,8 +1,14 @@
 // Login.js
-import React from 'react';
+
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 
 const Login = ({ navigation }) => {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>CECOEXP</Text>
@@ -13,6 +19,8 @@ const Login = ({ navigation }) => {
         autoCapitalize="none"
         autoCompleteType="email"
         autoCorrect={false}
+        onChangeText={text => setEmail(text)}
+
       />
 
       <TextInput
@@ -21,6 +29,7 @@ const Login = ({ navigation }) => {
         autoCapitalize="none"
         autoCompleteType="password"
         autoCorrect={false}
+        onChangeText={text => setPassword(text)}
         secureTextEntry
       />
 
