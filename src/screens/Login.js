@@ -1,13 +1,28 @@
 // Login.js
-
-import React, { useState } from 'react';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 
 const Login = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
+  const handleLogin = async () => {
+    try {
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          // Login bem-sucedido, navegue para a página desejada após o login
+          navigation.navigate('Bem Vindo');
+        })
+        .catch((error) => {
+          setErrorMessage('Credenciais inválidas. Verifique seu email e senha.');
+        });
+    } catch (error) {
+      console.error(error);
+      setErrorMessage('Ocorreu um erro inesperado.');
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -19,8 +34,8 @@ const Login = ({ navigation }) => {
         autoCapitalize="none"
         autoCompleteType="email"
         autoCorrect={false}
-        onChangeText={text => setEmail(text)}
-
+        value={email}
+        onChangeText={setEmail}
       />
 
       <TextInput
@@ -29,17 +44,18 @@ const Login = ({ navigation }) => {
         autoCapitalize="none"
         autoCompleteType="password"
         autoCorrect={false}
-        onChangeText={text => setPassword(text)}
         secureTextEntry
-      />
+        value={password}
+        onChangeText={setPassword}
 
-      <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate("Bem Vindo"); }}>
+      />
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>CONFIRMAR</Text>
       </TouchableOpacity>
 
       <View style={styles.signupContainer}>
         <Text style={styles.signupText}>Não tem uma conta?</Text>
-        <TouchableOpacity onPress={() => { navigation.navigate("SignUp"); }}>
+        <TouchableOpacity onPress={() => { navigation.navigate("Sign Up"); }}>
           <Text style={styles.signupLink}>Cadastrar</Text>
         </TouchableOpacity>
       </View>

@@ -1,48 +1,110 @@
 // SignUp.js
-import React from 'react';
+
+import firebase from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { initializeApp, getApps } from 'firebase/app';
+
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
-import Login from './Login'; 
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBtiQAMCRVXq0D4QommSpefulXNlCQdoS0",
+  authDomain: "reactfirebase-1f574.firebaseapp.com",
+  projectId: "reactfirebase-1f574",
+  storageBucket: "reactfirebase-1f574.appspot.com",
+  messagingSenderId: "196219392111",
+  appId: "1:196219392111:web:74153bde0ccde2905a3d9a"
+};
+
+if (!getApps().length) {
+  initializeApp(firebaseConfig);
+}
+
 
 const SignUp = ({ navigation }) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSignUp = async () => {
+    if (password !== confirmPassword) {
+      alert('As senhas não coincidem.');
+      return;
+    }
+    if (password.length < 8) {
+      alert('A senha deve ter pelo menos 6 caracteres.');
+      return;
+    }
+
+
+
+    try {
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert('Cadastro concluído com sucesso!');
+          setEmail('');
+          setPassword('');
+          setConfirmPassword('');
+
+          navigation.navigate("Login");
+
+        })
+        .catch((error) => {
+          console.error(error.message);
+          alert('Ocorreu um erro durante o cadastro. Verifique as informações fornecidas.');
+        });
+    } catch (error) {
+      console.error(error);
+      alert('Ocorreu um erro inesperado.');
+    }
+  };
+
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.t2Texto}>Criar uma nova conta</Text>
 
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Nome"
+          placeholder="Email"
           autoCapitalize="none"
-          autoCompleteType="off"
+          autoCompleteType="email"
           autoCorrect={false}
-        />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Sobrenome"
-          autoCapitalize="none"
-          autoCompleteType="off"
-          autoCorrect={false}
+          value={email}
+          onChangeText={setEmail}
         />
 
         <TextInput
           style={styles.input}
           placeholder="Senha"
           autoCapitalize="none"
-          autoCompleteType="off"
+          autoCompleteType="password"
           autoCorrect={false}
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
         />
 
         <TextInput
           style={styles.input}
           placeholder="Repita a senha"
           autoCapitalize="none"
-          autoCompleteType="off"
+          autoCompleteType="password"
           autoCorrect={false}
+          secureTextEntry
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
         />
       </View>
 
-      <TouchableOpacity style={styles.button} >
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>CADASTRAR</Text>
       </TouchableOpacity>
 
@@ -107,7 +169,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     fontFamily: 'serif',
 
-   },
+  },
 
   loginContainer: {
     flexDirection: 'row',
