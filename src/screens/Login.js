@@ -1,6 +1,6 @@
 // Login.js
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import { Alert ,StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 
 const Login = ({ navigation }) => {
@@ -16,11 +16,11 @@ const Login = ({ navigation }) => {
           navigation.navigate('Bem Vindo');
         })
         .catch((error) => {
-          setErrorMessage('Credenciais inválidas. Verifique seu email e senha.');
+          Alert.alert('Erro no login', 'Credenciais inválidas. Verifique seu email e senha.');
         });
     } catch (error) {
       console.error(error);
-      setErrorMessage('Ocorreu um erro inesperado.');
+      Alert.alert('Erro inesperado', 'Ocorreu um erro inesperado durante o login.');
     }
   };
 

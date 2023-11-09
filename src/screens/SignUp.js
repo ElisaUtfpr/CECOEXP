@@ -7,7 +7,8 @@ import { initializeApp, getApps } from 'firebase/app';
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 
-
+import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBtiQAMCRVXq0D4QommSpefulXNlCQdoS0",

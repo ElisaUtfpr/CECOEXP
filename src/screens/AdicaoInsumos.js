@@ -1,9 +1,24 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+import { Alert ,StyleSheet, View, Text, TextInput, TouchableOpacity, StatusBar } from 'react-native';
+import React, { useState } from 'react';
 
 const AdicaoInsumos = () => {
 
+  const [nome, setNome] = useState('');
+  const [quantidade, setQuantidade] = useState('');
+  const [validade, setValidade] = useState('');
+  const [fornecedor, setFornecedor] = useState('');
 
+  const cadastrar = async () => {
+    try{
+
+    }
+    catch (error) {
+      console.error(error);
+      Alert.alert('Erro inesperado', 'Ocorreu um erro inesperado durante o login.');
+
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -11,25 +26,34 @@ const AdicaoInsumos = () => {
       <Text style={styles.text}>Nome: </Text>
       <TextInput
         style={styles.input}
+        value={nome}
+        onChangeText={setNome}
       />
-      <Text style={styles.text}>Quantidade: </Text>
 
+      <Text style={styles.text}>Quantidade: </Text>
       <TextInput
         style={styles.input}
         keyboardType="numeric"
+        value={quantidade}
+        onChangeText={setQuantidade}
       />
+
       <Text style={styles.text}>Validade: </Text>
-
       <TextInput
         style={styles.input}
+        value={validade}
+        onChangeText={setValidade}
       />
+
       <Text style={styles.text}>Fornecedor: </Text>
-
       <TextInput
         style={styles.input}
+        value={fornecedor}
+        onChangeText={setFornecedor}
       />
 
-      <TouchableOpacity style={styles.button}>
+
+      <TouchableOpacity style={styles.button} onPress={cadastrar}>
         <Text style={styles.buttonText}>Adicionar Produto</Text>
       </TouchableOpacity>
     </View>
@@ -46,8 +70,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     marginBottom: 10,
-    marginLeft:50 ,
-  }, 
+    marginLeft: 50,
+  },
 
   input: {
     backgroundColor: 'white',
@@ -55,7 +79,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 15,
     borderRadius: 5,
-    marginLeft: 40 ,
+    marginLeft: 40,
 
   },
   button: {
@@ -66,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 220,
     borderRadius: 30,
-    marginLeft: 95 ,
+    marginLeft: 95,
 
   },
 

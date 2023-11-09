@@ -14,7 +14,7 @@ const BemVindo = ({ navigation }) => {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text style={styles.t1titulo}> CECOEXP </Text>
       <StatusBar style="auto" />
-      <Text style={styles.t1texto}> Bem Vindo :Usuario  </Text>
+      <Text style={styles.t1texto}> Bem Vindo   </Text>
 
       <Pressable style={styles.button} onPress={() => navigation.navigate('CECOEXP')}>
       <Text style={styles.t1txtbotao}>COMEÇAR</Text>
