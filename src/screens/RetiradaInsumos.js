@@ -9,6 +9,7 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
+import { format } from 'date-fns'; 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { serverTimestamp  , getDatabase, ref, push, set, child, get } from 'firebase/database';
 
@@ -74,13 +75,15 @@ const RetiradaInsumos = () => {
     }
 
     const retiradasRef = ref(database, 'retiradas');
+    const today = new Date();
+    const formattedDate = format(today, 'dd/MM/yyyy'); 
 
     const novaRetiradaRef = push(retiradasRef);
     set(novaRetiradaRef, {
       produto: selectedProduct,
       quantidade: parseInt(quantity, 10), // Convert to integer
       usuario: user.email || 'emaildesconhecido@example.com', // Email do usuário
-      data: serverTimestamp(), // Data da retirada
+      data: formattedDate,
     });
 
     setQuantity('');

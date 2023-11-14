@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     elevation: 4,
-    width: 320,
+    width: 410,
   },
   produtoNome: {
     fontSize: 18,
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
   },
-
 });
 
 export default ProductCard;
