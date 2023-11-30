@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 
 const AdicaoInsumos = () => {
-  const [nome, setNome] = useState('');
+  const [produto, setProduto] = useState('');
   const [quantidade, setQuantidade] = useState('');
   const [validade, setValidade] = useState('');
   const [fornecedor, setFornecedor] = useState('');
 
   const handleAdicionarInsumo = () => {
-    if (!nome || !quantidade || !validade || !fornecedor) {
+    if (!produto || !quantidade || !validade || !fornecedor) {
       Alert.alert('Campos obrigatórios', 'Preencha todos os campos para adicionar o insumo.');
       return;
     }
@@ -19,13 +19,13 @@ const AdicaoInsumos = () => {
 
     const novoInsumoRef = push(insumosRef);
     set(novoInsumoRef, {
-      nome,
+      produto,
       quantidade,
       validade,
       fornecedor,
     });
 
-    setNome('');
+    setProduto('');
     setQuantidade('');
     setValidade('');
     setFornecedor('');
@@ -38,8 +38,8 @@ const AdicaoInsumos = () => {
       <Text style={styles.text}>Nome: </Text>
       <TextInput
         style={styles.input}
-        value={nome}
-        onChangeText={setNome}
+        value={produto}
+        onChangeText={setProduto}
       />
       <Text style={styles.text}>Quantidade: </Text>
       <TextInput

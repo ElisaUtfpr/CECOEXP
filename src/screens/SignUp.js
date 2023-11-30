@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { initializeApp, getApps } from 'firebase/app';
 
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import {Alert ,StyleSheet, View, Text, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 
 
 const firebaseConfig = {
@@ -29,11 +29,11 @@ const SignUp = ({ navigation }) => {
 
   const handleSignUp = async () => {
     if (password !== confirmPassword) {
-      alert('As senhas não coincidem.');
+      Alert.alert('Erro','As senhas não coincidem.');
       return;
     }
-    if (password.length < 8) {
-      alert('A senha deve ter pelo menos 6 caracteres.');
+    if (password.length < 6) {
+      Alert.alert('Erro','A senha deve ter pelo menos 6 caracteres.');
       return;
     }
 
@@ -44,7 +44,7 @@ const SignUp = ({ navigation }) => {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          alert('Cadastro concluído com sucesso!');
+          Alert.alert('Sucesso','Cadastro concluído com sucesso!');
           setEmail('');
           setPassword('');
           setConfirmPassword('');
@@ -54,11 +54,11 @@ const SignUp = ({ navigation }) => {
         })
         .catch((error) => {
           console.error(error.message);
-          alert('Ocorreu um erro durante o cadastro. Verifique as informações fornecidas.');
+          Alert.alert('Erro','Ocorreu um erro durante o cadastro. Verifique as informações fornecidas.');
         });
     } catch (error) {
       console.error(error);
-      alert('Ocorreu um erro inesperado.');
+      Alert.alert('Erro','Ocorreu um erro inesperado.');
     }
   };
 

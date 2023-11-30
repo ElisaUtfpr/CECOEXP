@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     
   },
    card: {
-    marginRight: 1150,
+    marginRight: 1000,
     
   },
 });
