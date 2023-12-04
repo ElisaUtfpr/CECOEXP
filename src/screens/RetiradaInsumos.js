@@ -37,17 +37,20 @@ const RetiradaInsumos = () => {
 
   const fetchProductList = async () => {
     try {
-      const produtosRef = ref(database, 'insumos');
-      const snapshot = await get(produtosRef);
+      const insumosRef = ref(database, 'insumos');
+      const snapshot = await get(insumosRef);
 
       if (snapshot.exists()) {
-        // Se existirem produtos, atualiza a lista de produtos
+        // Se existirem insumos, atualiza a lista de produtos
         const produtos = snapshot.val();
-        const productNames = Object.keys(produtos).map((key) => produtos[key].nome);
-        setProductList(productNames);
+        const productList = Object.keys(produtos).map((key) => ({
+          id: key,
+          ...produtos[key],
+        }));
+        setProductList(productList);
       }
     } catch (error) {
-      console.error('Erro ao buscar a lista de produtos:', error);
+      console.error('Erro ao buscar a lista de insumos:', error);
     }
   };
 
@@ -117,13 +120,13 @@ const RetiradaInsumos = () => {
           <View style={styles.modalContent}>
             <FlatList
               data={productList}
-              keyExtractor={(item) => item}
+              keyExtractor={(item) => item.id}
               renderItem={({ item }) => (
                 <TouchableOpacity
                   style={styles.productItem}
-                  onPress={() => selectProduct(item)}
+                  onPress={() => selectProduct(item.produto)}
                 >
-                  <Text>{item}</Text>
+                  <Text>{item.produto}</Text>
                 </TouchableOpacity>
               )}
             />
