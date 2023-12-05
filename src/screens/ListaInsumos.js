@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, TextInput, StyleSheet, View, Text, ScrollView, SafeAreaView, StatusBar } from 'react-native';
-import ProductCard from '../componente/ProductCard';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
+  StatusBar,
+} from 'react-native';
 import { getDatabase, ref, onValue } from 'firebase/database';
+import ProductCard from '../componente/ProductCard';
+import { FontAwesome } from '@expo/vector-icons'; // Importe o ícone necessário (FontAwesome, neste exemplo)
+import { useNavigation } from '@react-navigation/native'; // Importe useNavigation
 
 const ListaInsumos = () => {
-  const [searchText, setSearchText] = useState('');
   const [products, setProducts] = useState([]);
+  const [searchText, setSearchText] = useState('');
   const navigation = useNavigation();
 
   useEffect(() => {
     const database = getDatabase();
     const insumosRef = ref(database, 'insumos');
+
 
     onValue(insumosRef, (snapshot) => {
       const data = snapshot.val();
@@ -23,10 +33,21 @@ const ListaInsumos = () => {
     });
   }, []);
 
+  const filteredProducts = products.filter(
+    (product) =>
+      product.produto.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.quantidade.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.validade.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.searchBar}>
-        <Icon name="search" size={20} color="#000" />
+      <FontAwesome name="search" size={20} color="black" style={styles.searchIcon} />
+
         <TextInput
           style={styles.searchInput}
           placeholder="Pesquisar produtos"
@@ -34,29 +55,25 @@ const ListaInsumos = () => {
           value={searchText}
         />
       </View>
+
       <ScrollView style={styles.scrollView}>
-        {products
-          .filter((product) =>
-            (product.nome && product.nome.toLowerCase().includes(searchText.toLowerCase()))
-          )
-          .map((product) => (
-            <TouchableOpacity
-              key={product.id}
-              onPress={() => {
-                navigation.navigate('Detalhes do Produto', {
-                  produtoNome: product.nome || 'Sem nome',
-                  estoque: 0, // Coloque a lógica correta para o estoque
-                  dataUso: 'Sem data',
-                });
-              }}
-            >
-              <ProductCard style={styles.card}
-                key={product.id}
-                produtoNome={product.nome || 'Sem nome'}
-                estoque={0} // Coloque a lógica correta para o estoque
-                dataUso={'Sem data'}
-              />
-            </TouchableOpacity>
+        {filteredProducts.map((product) => (
+          <TouchableOpacity key={product.id} style={styles.card} onPress={() =>  navigation.navigate('Detalhes do Produto' , {
+            productId: product.id, // Passando o ID do produto como parâmetro
+            // Outros dados que você deseja passar para a tela de detalhes
+            produto: product.produto,
+            estoque: product.quantidade,
+            validade: product.validade,
+            recebimento: product.recebimento,
+            fornecedor: product.fornecedor,
+          }
+          ) }>
+          <ProductCard
+              produto={product.produto}
+              estoque={product.quantidade}
+              validade={product.validade}
+            />
+          </TouchableOpacity>
           ))}
       </ScrollView>
     </SafeAreaView>
@@ -88,11 +105,6 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: '100%',
-    
-  },
-   card: {
-    marginRight: 1000,
-    
   },
 });
 

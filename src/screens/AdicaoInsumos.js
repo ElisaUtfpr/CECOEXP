@@ -7,9 +7,10 @@ const AdicaoInsumos = () => {
   const [quantidade, setQuantidade] = useState('');
   const [validade, setValidade] = useState('');
   const [fornecedor, setFornecedor] = useState('');
+  const [recebimento, setRecebimento] = useState('');
 
   const handleAdicionarInsumo = () => {
-    if (!produto || !quantidade || !validade || !fornecedor) {
+    if (!produto || !quantidade || !validade || !fornecedor || !recebimento) {
       Alert.alert('Campos obrigatórios', 'Preencha todos os campos para adicionar o insumo.');
       return;
     }
@@ -23,12 +24,14 @@ const AdicaoInsumos = () => {
       quantidade,
       validade,
       fornecedor,
+      recebimento,
     });
 
     setProduto('');
     setQuantidade('');
     setValidade('');
     setFornecedor('');
+    setRecebimento('');
 
     Alert.alert('Sucesso', 'Insumo adicionado com sucesso!');
   };
@@ -59,6 +62,12 @@ const AdicaoInsumos = () => {
         style={styles.input}
         value={fornecedor}
         onChangeText={setFornecedor}
+      />
+      <Text style={styles.text}>Data do recebimento: </Text>
+      <TextInput
+        style={styles.input}
+        value={recebimento}
+        onChangeText={setRecebimento}
       />
       <TouchableOpacity style={styles.button} onPress={handleAdicionarInsumo}>
         <Text style={styles.buttonText}>Adicionar Produto</Text>

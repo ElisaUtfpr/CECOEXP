@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ProductCard = ({ produtoNome, estoque, dataUso }) => {
+const ProductCard = ({ produto, estoque, validade }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.produtoNome}>{produtoNome}</Text>
+      <Text style={styles.produto}>{produto}</Text>
       <Text style={styles.texto}>Estoque: {estoque}</Text>
-      <Text style={styles.texto}>Último Uso: {dataUso}</Text> 
+      <Text style={styles.texto}>Validade: {validade}</Text> 
     </View>
   );
 };
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     width: 410,
   },
-  produtoNome: {
+  produto: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
